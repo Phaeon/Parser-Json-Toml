@@ -1,0 +1,26 @@
+#include <fstream>
+#include "jsonParser.hh"
+
+#include "scanner.hh"
+
+common::Document* parseJSON(const std::string &filename) {
+    auto input = std::ifstream(filename);
+    common::driver driver;
+    json::scanner scanner(input, std::cout);
+    json::parser parser(scanner, driver);
+
+    if (!input.good()) {
+        std::cerr << "impossible de lire le fichier : " << filename << std::endl;
+        return driver.get_racine();
+    }
+
+    parser.set_debug_level(false);
+    if (parser.parse()) {
+        std::cerr << "erreur de parsing du fichier" << std::endl;
+        return nullptr;
+    }
+
+    input.close();
+
+    return driver.get_racine();
+}

@@ -1,0 +1,17 @@
+#ifndef COMMON_HH
+#define COMMON_HH
+
+#pragma once
+
+#include "driver.hh"
+#include "booleen.h"
+#include "cle.h"
+#include "document.h"
+#include "element.h"
+#include "nombre.h"
+#include "tableau.h"
+#include "texte.h"
+#include "valeur.h"
+#include "objet.h"
+
+#endif
